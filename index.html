@@ -196,3 +196,102 @@ function createHearts(){
 </body>
 </html>
 background-image:url("IMG_7075.jpeg");
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>For Rohy ❤️</title>
+
+<style>
+body{
+  margin:0;
+  padding:0;
+  font-family:Arial;
+  text-align:center;
+  background-image:url("IMG_7075.jpeg");
+  background-size:cover;
+  background-position:center;
+  background-attachment:fixed;
+  color:white;
+}
+
+.overlay{
+  background:rgba(0,0,0,0.6);
+  min-height:100vh;
+  padding:30px;
+}
+
+#passwordBox{
+  position:absolute;
+  top:50%;
+  left:50%;
+  transform:translate(-50%,-50%);
+}
+
+input{
+  padding:10px;
+  border-radius:8px;
+  border:none;
+}
+
+button{
+  padding:10px 20px;
+  border:none;
+  border-radius:8px;
+  background:red;
+  color:white;
+}
+
+img{
+  width:200px;
+  margin:10px;
+  border-radius:20px;
+}
+
+</style>
+</head>
+
+<body>
+
+<div id="passwordBox">
+  <h2>Enter Password ❤️</h2>
+  <input type="password" id="passwordInput">
+  <br><br>
+  <button onclick="checkPassword()">Open 💕</button>
+  <p id="error"></p>
+</div>
+
+<div id="mainContent" style="display:none;">
+<div class="overlay">
+
+<h1>Happy Valentine ya Rohy ❤️</h1>
+
+<img src="IMG_7075.jpeg">
+<img src="IMG_7085.jpeg">
+<img src="IMG_7752.jpeg">
+
+<audio id="music" loop>
+  <source src="09_-_Hob_Omry.mp3" type="audio/mpeg">
+</audio>
+
+</div>
+</div>
+
+<script>
+
+function checkPassword(){
+  var pass = document.getElementById("passwordInput").value;
+
+  if(pass.trim() === "m"){
+    document.getElementById("passwordBox").style.display="none";
+    document.getElementById("mainContent").style.display="block";
+    document.getElementById("music").play();
+  }else{
+    document.getElementById("error").innerHTML="Wrong Password 💔";
+  }
+}
+
+</script>
+
+</body>
+</html>
