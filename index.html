@@ -6,122 +6,186 @@
 
 <style>
 body{
-    margin:0;
-    padding:0;
-    text-align:center;
-    font-family:Arial;
-    background:linear-gradient(to bottom,#ff9a9e,#fad0c4);
-    overflow:hidden;
+  margin:0;
+  padding:0;
+  font-family:Arial;
+  text-align:center;
+  background-image:url("IMG_7075.jpeg");
+  background-size:cover;
+  background-position:center;
+  background-attachment:fixed;
+  color:white;
+  overflow:hidden;
 }
 
-/* اخفاء المحتوى لحد ما الباسورد يتكتب */
-#main{
-    display:none;
-    padding-top:40px;
-    position:relative;
-    z-index:2;
+/* شاشة البداية السينمائية */
+.cinematic{
+  position:fixed;
+  width:100%;
+  height:100%;
+  background:black;
+  top:0;
+  left:0;
+  z-index:999;
+  opacity:1;
+  transition:2s ease;
 }
 
-h1,p{
-    color:white;
+/* زووم خفيف */
+.zoom{
+  animation:zoomEffect 10s ease-in-out forwards;
+}
+
+@keyframes zoomEffect{
+  from{background-size:100%;}
+  to{background-size:110%;}
+}
+
+.overlay{
+  background:rgba(0,0,0,0.65);
+  min-height:100vh;
+  padding:30px;
+}
+
+#passwordBox{
+  position:absolute;
+  top:50%;
+  left:50%;
+  transform:translate(-50%,-50%);
+}
+
+input{
+  padding:10px;
+  border-radius:8px;
+  border:none;
 }
 
 button{
-    padding:15px 30px;
-    font-size:18px;
-    background:red;
-    color:white;
-    border:none;
-    border-radius:10px;
-    cursor:pointer;
+  padding:10px 20px;
+  border:none;
+  border-radius:8px;
+  background:red;
+  color:white;
+  cursor:pointer;
 }
 
-/* قلوب */
-.heart{
-    position:fixed;
-    top:-10px;
-    color:red;
-    font-size:20px;
-    animation:fall 6s linear infinite;
-    z-index:1;
+h1{
+  font-size:40px;
+  letter-spacing:3px;
+  opacity:0;
+  transform:translateY(20px);
+  transition:1.5s ease;
 }
 
-@keyframes fall{
-    0%{transform:translateY(0);}
-    100%{transform:translateY(110vh);}
+.showTitle{
+  opacity:1;
+  transform:translateY(0);
+}
+
+img{
+  width:220px;
+  margin:10px;
+  border-radius:15px;
 }
 
 video{
-    width:300px;
-    margin-top:20px;
-    border-radius:15px;
+  width:300px;
+  margin-top:20px;
+  border-radius:15px;
 }
+
+.heart{
+  position:fixed;
+  font-size:20px;
+  animation:fall linear infinite;
+}
+
+@keyframes fall{
+  0%{top:-10%;}
+  100%{top:110%;}
+}
+
 </style>
 </head>
 
 <body>
 
-<div id="main">
-    <h1>Happy Valentine Ya Rohyy 💖</h1>
-    <p>You are my favorite person in the whole world.</p>
+<div class="cinematic" id="cinematicScreen"></div>
 
-    <button onclick="love()">Click for a surprise ❤️</button>
-    <p id="msg"></p>
-
-    <!-- الفيديو -->
-    <video id="myVideo" autoplay loop controls>
-        <source src="https://vt.tiktok.com/ZSmj3sap6/" type="video/mp4">
-    </video>
+<div id="passwordBox">
+  <h2>Enter The Password ❤️</h2>
+  <input type="password" id="passwordInput">
+  <br><br>
+  <button onclick="checkPassword()">Open 💕</button>
+  <p id="error"></p>
 </div>
 
-<!-- الموسيقى -->
-<audio id="bgMusic" loop>
-    <source src="https://youtu.be/neRuh32O3yU?si=TZ1vI776oZpGDIMD" type="audio/mp3">
+<div id="mainContent" style="display:none;">
+<div class="overlay">
+
+<h1 id="title">Happy Valentine ya Rohy ❤️</h1>
+
+<p>
+كل سنة وانت معايا ❤️  
+أنت أحلى حاجة في حياتي 💕
+</p>
+
+<img src="IMG_7075.jpeg">
+<img src="IMG_7085.jpeg">
+<img src="IMG_7752.jpeg">
+
+<video controls autoplay>
+  <source src="https://vt.tiktok.com/ZSmjTUqYy/" type="video/mp4">
+</video>
+
+<audio id="music" loop>
+  <source src="09_-_Hob_Omry.mp3" type="audio/mpeg">
 </audio>
+
+</div>
+</div>
 
 <script>
 
-/* الباسورد */
-var userPassword = prompt("Enter the password 💕");
+function checkPassword(){
+  var pass = document.getElementById("passwordInput").value;
 
-if(userPassword === "ro7y123"){
-    document.getElementById("main").style.display="block";
-    document.getElementById("bgMusic").play();
-    createHearts();
-}else{
-    document.body.innerHTML="<h1 style='text-align:center;margin-top:100px;'>Wrong Password 💔</h1>";
-}
+  if(pass === "M11"){
 
-/* رسالة المفاجأة */
-function love(){
-    document.getElementById("msg").innerHTML=
-    "I love you more than yesterday and less than tomorrow 💗";
-}
+    document.getElementById("passwordBox").style.display="none";
+    document.getElementById("mainContent").style.display="block";
 
-/* قلوب تقع */
-function createHearts(){
-    setInterval(function(){
-        var heart=document.createElement("div");
-        heart.className="heart";
-        heart.innerHTML="❤️";
-        heart.style.left=Math.random()*100+"vw";
-        heart.style.fontSize=(Math.random()*20+15)+"px";
-        heart.style.animationDuration=(Math.random()*3+3)+"s";
-        document.body.appendChild(heart);
-
-        setTimeout(function(){
-            heart.remove();
-        },6000);
-
+    /* تأثير سينمائي */
+    setTimeout(function(){
+      document.getElementById("cinematicScreen").style.opacity="0";
+      document.body.classList.add("zoom");
+      document.getElementById("title").classList.add("showTitle");
     },500);
+
+    /* تشغيل الموسيقى فورًا */
+    document.getElementById("music").play();
+
+    createHearts();
+
+  }else{
+    document.getElementById("error").innerHTML="Wrong Password 💔";
+  }
 }
+
+function createHearts(){
+  setInterval(function(){
+    let heart=document.createElement("div");
+    heart.className="heart";
+    heart.innerHTML="❤️";
+    heart.style.left=Math.random()*100+"%";
+    heart.style.animationDuration=(Math.random()*3+3)+"s";
+    document.body.appendChild(heart);
+    setTimeout(()=>{heart.remove();},6000);
+  },500);
+}
+
 </script>
 
 </body>
 </html>
-img{
-    width:200px;
-    margin:10px;
-    border-radius:20px;
-    box-shadow:0 0 15px rgba(255,255,255,0.7);
-}
+background-image:url("IMG_7075.jpeg");
