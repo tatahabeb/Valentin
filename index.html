@@ -150,7 +150,14 @@ video{
 function checkPassword(){
   var pass = document.getElementById("passwordInput").value;
 
-  if(pass === "m"){
+  if(pass.trim() === "m"){
+    document.getElementById("passwordBox").style.display="none";
+    document.getElementById("mainContent").style.display="block";
+    document.getElementById("music").play();
+  }else{
+    document.getElementById("error").innerHTML="Wrong Password 💔";
+  }
+}
 
     document.getElementById("passwordBox").style.display="none";
     document.getElementById("mainContent").style.display="block";
