@@ -1,46 +1,215 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>For My Love ❤️</title>
+<meta charset="UTF-8">
+<title>For Rohy ❤️</title>
+
 <style>
-body {
-  background: linear-gradient(to right, #ff9a9e, #fad0c4);
-  text-align: center;
-  font-family: Arial;
-  padding: 60px;
+body{
+    margin:0;
+    padding:0;
+    text-align:center;
+    font-family:Arial;
+    background:linear-gradient(to bottom,#ff9a9e,#fad0c4);
+    overflow-x:hidden;
 }
-h1 {
-  color: white;
-  font-size: 40px;
+
+#main{
+    display:none;
+    padding:20px;
 }
-p {
-  color: white;
-  font-size: 20px;
+
+button{
+    padding:15px 30px;
+    font-size:18px;
+    background:red;
+    color:white;
+    border:none;
+    border-radius:10px;
 }
-button {
-  padding: 15px 30px;
-  font-size: 18px;
-  background-color: white;
-  color: #ff4d6d;
-  border: none;
-  border-radius: 15px;
-  cursor: pointer;
+
+img{
+    width:250px;
+    margin:15px;
+    opacity:0;
+    transition:1.5s;
+}
+
+video{
+    width:300px;
+    margin-top:20px;
+}
+
+.heart{
+    position:fixed;
+    color:red;
+    animation:fall 5s linear infinite;
+}
+
+@keyframes fall{
+    0%{top:-10%;}
+    100%{top:110%;}
 }
 </style>
 </head>
+
 <body>
 
-<h1>Happy Valentine Ya Rohhy 💕</h1>
-<p>You are my favorite person in the whole world.</p>
+<h1 id="welcome">Click to open your surprise ❤️</h1>
+<button onclick="start()">Open ❤️</button>
 
-<button onclick="love()">Click for a surprise ❤️</button>
+<div id="main">
 
-<p id="msg"></p>
+<h2 id="type"></h2>
+
+<div id="countdown"></div>
+
+<br>
+
+<img src="IMG_8940.jpeg" class="fade">
+<img src="IMG_8936.jpeg" class="fade">
+<img src="IMG_8475.jpeg" class="fade">
+<img src="IMG_7782.jpeg" class="fade">
+
+<br>
+
+<video controls>
+  <source src="اسم_الفيديو.mp4" type="video/mp4">
+</video>
+
+<br><br>
+
+<audio autoplay loop>
+  <source src="09_-_Hob_Omry.mp3" type="audio/mpeg">
+</audio>
+
+</div>
+
+<script>
+
+function start(){
+    document.getElementById("welcome").style.display="none";
+    document.querySelector("button").style.display="none";
+    document.getElementById("main").style.display="block";
+    typeWriter();
+    showImages();
+    createHearts();
+}
+
+var text="Happy Valentine ya Rohy ❤️ You are my everything 💕";
+var i=0;
+
+function typeWriter(){
+    if(i<text.length){
+        document.getElementById("type").innerHTML += text.charAt(i);
+        i++;
+        setTimeout(typeWriter,80);
+    }
+}
+
+function showImages(){
+    let images=document.querySelectorAll("img");
+    let delay=1000;
+    images.forEach((img,index)=>{
+        setTimeout(()=>{
+            img.style.opacity="1";
+        },delay*(index+1));
+    });
+}
+
+function createHearts(){
+    setInterval(()=>{
+        let heart=document.createElement("div");
+        heart.className="heart";
+        heart.innerHTML="❤️";
+        heart.style.left=Math.random()*100+"%";
+        heart.style.fontSize=(20+Math.random()*20)+"px";
+        document.body.appendChild(heart);
+        setTimeout(()=>{heart.remove();},5000);
+    },300);
+}
+
+/* countdown */
+var countDownDate = new Date("Feb 14, 2026 00:00:00").getTime();
+
+var x = setInterval(function() {
+  var now = new Date().getTime();
+  var distance = countDownDate - now;
+
+  var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+  document.getElementById("countdown").innerHTML =
+  "Countdown to our special day: " + days + " days ❤️";
+
+}, 1000);
+
+</script>
+
+</body>
+</html>
+<!DOCTYPE html>
+<html>
+<head>
+<title>For My Love ❤️</title>
+
+<style>
+body {
+    background: linear-gradient(to right, #ff9a9e, #fad0c4);
+    text-align: center;
+    font-family: Arial;
+    padding: 60px;
+}
+
+#content {
+    display: none;
+}
+
+h1 {
+    color: white;
+    font-size: 40px;
+}
+
+p {
+    color: white;
+    font-size: 20px;
+}
+
+button {
+    padding: 15px 30px;
+    font-size: 18px;
+    background-color: white;
+    color: #ff4d6d;
+    border: none;
+    border-radius: 15px;
+    cursor: pointer;
+}
+</style>
+</head>
+
+<body>
+
+<script>
+var password = prompt("Enter the password 💕");
+
+if(password == "bhbk1611") {
+    document.getElementById("content").style.display = "block";
+} else {
+    document.write("<h1>Wrong Password 💔</h1>");
+}
+</script>
+
+<div id="content">
+    <h1>Happy Valentine Ya Rohyy 💞</h1>
+    <p>You are my favorite person in the whole world.</p>
+
+    <button onclick="love()">Click for a surprise ❤️</button>
+
+    <p id="msg"></p>
+</div>
 
 <script>
 function love() {
-  document.getElementById("msg").innerHTML =
-  "I love you more than yesterday and less than tomorrow 💖";
+    document.getElementById("msg").innerHTML =
+    "I love you more than yesterday and less than tomorrow 💗";
 }
 </script>
 
