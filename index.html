@@ -1,75 +1,69 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<title>For Rohy ❤️</title>
+<title>For My Love ❤️</title>
 
 <style>
-body{
-  margin:0;
-  padding:0;
-  text-align:center;
-  font-family:Arial;
-  background:linear-gradient(#ffb6c1,#ffffff);
+body {
+    background: linear-gradient(to right, #ff9a9e, #fad0c4);
+    text-align: center;
+    font-family: Arial;
+    padding: 60px;
 }
 
-h1{
-  margin-top:30px;
-  color:#b30059;
+#content {
+    display: none;
 }
 
-p{
-  color:#b30059;
-  font-size:18px;
+h1 {
+    color: white;
+    font-size: 40px;
 }
 
-img{
-  width:220px;
-  margin:10px;
-  border-radius:15px;
-  box-shadow:0 0 15px rgba(0,0,0,0.2);
+p {
+    color: white;
+    font-size: 20px;
 }
 
-iframe{
-  margin-top:20px;
-  border-radius:15px;
+button {
+    padding: 15px 30px;
+    font-size: 18px;
+    background-color: white;
+    color: #ff4d6d;
+    border: none;
+    border-radius: 15px;
+    cursor: pointer;
 }
 </style>
 </head>
 
 <body>
 
-<h1>Happy Valentine ya Rohy ❤️</h1>
-<p>Kol sana w enta m3aya ya alby 💕</p>
+<script>
+var password = prompt("Enter the password 💕");
 
-<!-- الصور -->
-<img src="IMG_7075.jpeg">
-<img src="IMG_7085.jpeg">
-<img src="IMG_7752.jpeg">
-<img src="IMG_7772.jpeg">
-<img src="IMG_7782.jpeg">
-<img src="IMG_8475.jpeg">
-<img src="IMG_8937.jpeg">
-<img src="IMG_8940.jpeg">
-<img src="IMG_9558.jpeg">
+if(password == "❤️") {
+    document.getElementById("content").style.display = "block";
+} else {
+    document.write("<h1>Wrong Password 💔</h1>");
+}
+</script>
 
-<br><br>
+<div id="content">
+    <h1>Happy Valentine Ya Rohyy 💞</h1>
+    <p>You are my favorite person in the whole world.</p>
 
-<!-- فيديو TikTok -->
-<iframe 
-src="https://www.tiktok.com/embed/ZSmjwHM9M"
-width="325" 
-height="580" 
-frameborder="0" 
-allowfullscreen>
-</iframe>
+    <button onclick="love()">Click for a surprise ❤️</button>
 
-<br><br>
+    <p id="msg"></p>
+</div>
 
-<!-- الأغنية -->
-<audio autoplay loop>
-  <source src="09_-_Hob_Omry.mp3" type="audio/mpeg">
-</audio>
+<script>
+function love() {
+    document.getElementById("msg").innerHTML =
+    "I love you more than yesterday and less than tomorrow 💗";
+}
+</script>
 
 </body>
 </html>
